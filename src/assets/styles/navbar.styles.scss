@@ -1,0 +1,28 @@
+.bioncNavbar {
+  background-color: #fefefe;
+  padding: 16px;
+
+  box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.08);
+
+  & &__logo {
+    width: 48px;
+  }
+
+  & &__title {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+
+    &:nth-of-type(1) {
+      color: #646ecb;
+    }
+
+    &:nth-of-type(2) {
+      color: #9299da;
+    }
+  }
+
+  & &__link {
+    font-size: 0.885rem;
+    font-weight: 700;
+  }
+}

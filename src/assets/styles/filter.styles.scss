@@ -1,0 +1,13 @@
+.bioncFilter {
+
+  & &__paper {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+
+    width: 100%;
+    max-width: 480px;
+
+    padding: 16px;
+  }
+}
