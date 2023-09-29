@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
-import { darkMode, lightMode } from "../features/themes/themes.slice"
+import { darkMode, lightMode } from "../features/theme/theme.slice"
 
 import {
   Button,
@@ -58,17 +58,17 @@ const Navbar = () => {
       </Stack>
 
       <Stack direction="row" alignItems="center" spacing={1}>
-        <IconButton onClick={changeModeHandler}>
-          <Tooltip title={mode === "light" ? "Dark Mode" : "Light Mode"} arrow>
+        <Tooltip title={mode === "light" ? "Dark Mode" : "Light Mode"} arrow>
+          <IconButton onClick={changeModeHandler}>
             {mode === "light" ? <DarkMode /> : <LightMode />}
-          </Tooltip>
-        </IconButton>
+          </IconButton>
+        </Tooltip>
 
-        <IconButton>
-          <Tooltip title="Sign Out" arrow>
+        <Tooltip title="Sign Out" arrow>
+          <IconButton>
             <Logout />
-          </Tooltip>
-        </IconButton>
+          </IconButton>
+        </Tooltip>
       </Stack>
     </Stack>
   )
