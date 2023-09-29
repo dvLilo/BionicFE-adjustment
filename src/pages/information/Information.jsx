@@ -147,7 +147,7 @@ const Information = () => {
                       </TableCell>
 
                       <TableCell className="bioncTransaction__cell">
-                        {item.total_weight}
+                        {item.total_weight.toFixed(2)}
                       </TableCell>
 
                       <TableCell className="bioncTransaction__cell" align="center">

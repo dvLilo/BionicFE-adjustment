@@ -168,7 +168,7 @@ const Transaction = () => {
                       </TableCell>
 
                       <TableCell className="bioncTransaction__cell">
-                        {item.allowance}
+                        {item.allowance.toFixed(2)}
                       </TableCell>
 
                       <TableCell className="bioncTransaction__cell" align="center">
