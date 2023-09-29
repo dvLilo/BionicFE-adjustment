@@ -203,7 +203,7 @@ const Information = () => {
                           disableElevation: false
                         }
                       }}
-                      getTransaction={getInformation}
+                      onFilter={getInformation}
                     />
                   </TableCell>
                 </TableRow>

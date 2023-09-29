@@ -1,10 +1,13 @@
 import {
   createBrowserRouter,
-} from 'react-router-dom'
+} from "react-router-dom"
 
-import Login from '../pages/landing/Login'
+import MainLayout from "../layouts/MainLayout"
 
-import Transaction from '../pages/transaction/Transaction'
+import Login from "../pages/landing/Login"
+
+import Transaction from "../pages/transaction/Transaction"
+import Information from "../pages/information/Information"
 
 
 export const router = createBrowserRouter([
@@ -17,7 +20,16 @@ export const router = createBrowserRouter([
     element: <Login />
   },
   {
-    path: "transaction",
-    element: <Transaction />
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/summarized",
+        element: <Information />
+      },
+      {
+        path: "/detailed",
+        element: <Transaction />
+      }
+    ]
   }
 ], { basename: "/" })

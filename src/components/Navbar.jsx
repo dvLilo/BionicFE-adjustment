@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 import {
   Button,
   IconButton,
@@ -29,8 +31,8 @@ const Navbar = () => {
         </Stack>
 
         <Stack direction="row" alignItems="center" spacing={1}>
-          <Button className="bioncNavbar__link" size="large" color="info" startIcon={<Sort />}>Summarized</Button>
-          <Button className="bioncNavbar__link" size="large" color="info" startIcon={<Menu />}>Detailed</Button>
+          <Button className="bioncNavbar__link" size="large" color="info" to="/summarized" component={Link} startIcon={<Sort />}>Summarized</Button>
+          <Button className="bioncNavbar__link" size="large" color="info" to="/detailed" component={Link} startIcon={<Menu />}>Detailed</Button>
         </Stack>
       </Stack>
 

@@ -1,6 +1,17 @@
+import { Outlet } from "react-router-dom"
+
+import {
+  Box
+} from "@mui/material"
+
+import Navbar from "../components/Navbar"
+
 const MainLayout = () => {
   return (
-    <div>MainLayout</div>
+    <Box className="bioncMainLayout">
+      <Navbar />
+      <Outlet />
+    </Box>
   )
 }
 

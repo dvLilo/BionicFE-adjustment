@@ -49,7 +49,7 @@ const Filter = ({
     categoryInputProps = {},
     farmInputProps = {},
     buildingInputProps = {},
-  }
+  } = {}
 }) => {
 
   const anchorEl = useRef()
