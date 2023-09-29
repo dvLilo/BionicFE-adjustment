@@ -2,6 +2,8 @@ import {
   createBrowserRouter,
 } from "react-router-dom"
 
+import Private from "../components/Private"
+
 import MainLayout from "../layouts/MainLayout"
 
 import Login from "../pages/landing/Login"
@@ -20,7 +22,7 @@ export const router = createBrowserRouter([
     element: <Login />
   },
   {
-    element: <MainLayout />,
+    element: <Private Render={MainLayout} />,
     children: [
       {
         path: "/summarized",
