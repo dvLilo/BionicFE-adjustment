@@ -1,11 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit/'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
+import themeReducer from "../features/themes/themes.slice"
+
 import { transactionsApi } from "../features/transactions/transactions.slice"
 import { informationsApi } from "../features/informations/informations.slice"
 
 export const store = configureStore({
   reducer: {
+    theme: themeReducer,
+
     [transactionsApi.reducerPath]: transactionsApi.reducer,
     [informationsApi.reducerPath]: informationsApi.reducer
   },

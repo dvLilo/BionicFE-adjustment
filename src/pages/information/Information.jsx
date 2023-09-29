@@ -201,6 +201,11 @@ const Information = () => {
                         filterButtonProps: {
                           className: "bioncTransaction__button",
                           disableElevation: false
+                        },
+                        transactionNoInputProps: {
+                          sx: {
+                            display: "none"
+                          }
                         }
                       }}
                       onFilter={getInformation}

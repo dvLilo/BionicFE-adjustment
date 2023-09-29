@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom"
 
+import { useSelector, useDispatch } from "react-redux"
+import { darkMode, lightMode } from "../features/themes/themes.slice"
+
 import {
   Button,
   IconButton,
@@ -10,6 +13,7 @@ import {
 
 import {
   DarkMode,
+  LightMode,
   Logout,
   Menu,
   Sort
@@ -20,6 +24,23 @@ import Logo from "../assets/images/logo.png"
 import "../assets/styles/navbar.styles.scss"
 
 const Navbar = () => {
+
+  const dispatch = useDispatch()
+
+  const mode = useSelector((state) => state.theme.mode)
+
+  const changeModeHandler = () => {
+    if (mode === "dark") {
+      localStorage.setItem("theme", "light")
+
+      return dispatch(lightMode())
+    }
+
+    localStorage.setItem("theme", "dark")
+
+    dispatch(darkMode())
+  }
+
   return (
     <Stack className="bioncNavbar" direction="row" justifyContent="space-between" alignItems="center">
       <Stack direction="row" alignItems="center" spacing={4}>
@@ -37,9 +58,9 @@ const Navbar = () => {
       </Stack>
 
       <Stack direction="row" alignItems="center" spacing={1}>
-        <IconButton>
-          <Tooltip title="Dark Mode" arrow>
-            <DarkMode />
+        <IconButton onClick={changeModeHandler}>
+          <Tooltip title={mode === "light" ? "Dark Mode" : "Light Mode"} arrow>
+            {mode === "light" ? <DarkMode /> : <LightMode />}
           </Tooltip>
         </IconButton>
 

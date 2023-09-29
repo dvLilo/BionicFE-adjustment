@@ -1,9 +1,6 @@
-import { createTheme } from '@mui/material'
+import { createTheme } from "@mui/material"
 
-export const theme = createTheme({
-  palette: {
-    // mode: "dark"
-  },
+export const custom = createTheme({
   typography: {
     fontFamily: '"Poppins", sans-serif',
     fontSize: 13,

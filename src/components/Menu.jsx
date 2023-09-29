@@ -21,7 +21,7 @@ const Menu = ({
   slotProps: {
     editButtonProps = {},
     deleteButtonProps = {}
-  },
+  } = {},
   onUpdate = () => { },
   onDelete = () => { }
 }) => {
