@@ -5,7 +5,8 @@ import authRecuder from "../features/auth/auth.slice"
 import userReducer from "../features/user/user.slice"
 import themeReducer from "../features/theme/theme.slice"
 
-import { loginApi } from "../features/login/login.slice"
+import { loginApi } from "../features/logged/login.slice"
+import { logoutApi } from "../features/logged/logout.slice"
 import { transactionsApi } from "../features/transactions/transactions.slice"
 import { informationsApi } from "../features/informations/informations.slice"
 
@@ -16,11 +17,12 @@ export const store = configureStore({
     theme: themeReducer,
 
     [loginApi.reducerPath]: loginApi.reducer,
+    [logoutApi.reducerPath]: logoutApi.reducer,
     [transactionsApi.reducerPath]: transactionsApi.reducer,
     [informationsApi.reducerPath]: informationsApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([loginApi.middleware, transactionsApi.middleware, informationsApi.middleware]),
+    getDefaultMiddleware().concat([loginApi.middleware, logoutApi.middleware, transactionsApi.middleware, informationsApi.middleware]),
 })
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors

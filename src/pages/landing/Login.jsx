@@ -35,7 +35,7 @@ import useDisclosure from "../../hooks/useDisclosure"
 import { signIn } from "../../features/auth/auth.slice"
 import { setUserDetails } from "../../features/user/user.slice"
 
-import { useSignInMutation } from "../../features/login/login.slice"
+import { useSignInMutation } from "../../features/logged/login.slice"
 
 import "../../assets/styles/login.styles.scss"
 

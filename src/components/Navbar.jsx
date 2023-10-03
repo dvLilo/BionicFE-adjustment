@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
-import { darkMode, lightMode } from "../features/theme/theme.slice"
 
 import {
   Button,
@@ -21,6 +20,14 @@ import {
 
 import Logo from "../assets/images/logo.png"
 
+import useSweetAlert from "../hooks/useSweetAlert"
+
+import { signOut } from "../features/auth/auth.slice"
+import { clearUserDetails } from "../features/user/user.slice"
+import { darkMode, lightMode } from "../features/theme/theme.slice"
+
+import { useSignOutMutation } from "../features/logged/logout.slice"
+
 import "../assets/styles/navbar.styles.scss"
 
 const Navbar = () => {
@@ -28,6 +35,10 @@ const Navbar = () => {
   const dispatch = useDispatch()
 
   const mode = useSelector((state) => state.theme.mode)
+
+  const { toast } = useSweetAlert()
+
+  const [logOut, { isLoading }] = useSignOutMutation()
 
   const changeModeHandler = () => {
     if (mode === "dark") {
@@ -39,6 +50,25 @@ const Navbar = () => {
     localStorage.setItem("theme", "dark")
 
     dispatch(darkMode())
+  }
+
+  const submitLogOutHandler = async () => {
+    try {
+      await logOut().unwrap()
+
+      localStorage.removeItem("token")
+      localStorage.removeItem("user")
+
+      dispatch(signOut())
+      dispatch(clearUserDetails())
+
+    } catch (error) {
+      toast({
+        icon: "error",
+        title: "Error!",
+        text: "Something went wrong whilst trying to login. Please try again later.",
+      })
+    }
   }
 
   return (
@@ -65,7 +95,7 @@ const Navbar = () => {
         </Tooltip>
 
         <Tooltip title="Sign Out" arrow>
-          <IconButton>
+          <IconButton onClick={submitLogOutHandler} disabled={isLoading}>
             <Logout />
           </IconButton>
         </Tooltip>
