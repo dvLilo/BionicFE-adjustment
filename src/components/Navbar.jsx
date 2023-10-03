@@ -66,7 +66,7 @@ const Navbar = () => {
       toast({
         icon: "error",
         title: "Error!",
-        text: "Something went wrong whilst trying to login. Please try again later.",
+        text: "Something went wrong whilst trying to logout. Please try again later.",
       })
     }
   }

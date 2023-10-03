@@ -46,9 +46,10 @@ const UpdateTransaction = ({
     handleSubmit,
     reset,
     setValue,
-    // formState: {
-    //   errors
-    // }
+    setError,
+    formState: {
+      errors
+    }
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -111,7 +112,24 @@ const UpdateTransaction = ({
           })
           cancelUpdateHandler()
         } catch (error) {
-          console.log(error)
+          if (error.status === 422) {
+            Object.entries(error.data.errors).forEach((item) => {
+              const [name, [message]] = item
+
+              setError(name, {
+                type: "manual",
+                message: message
+              })
+            })
+
+            return
+          }
+
+          toast({
+            icon: "error",
+            title: "Error!",
+            text: "Something went wrong whilst trying to update this transaction. Please try again later.",
+          })
         }
       }
     })
@@ -143,6 +161,8 @@ const UpdateTransaction = ({
           name="transaction_no"
           label="Transaction No."
           size="small"
+          helperText={errors?.transaction_no?.message}
+          error={!!errors?.transaction_no}
           InputProps={{
             readOnly: true,
             disabled: true
@@ -154,6 +174,8 @@ const UpdateTransaction = ({
           name="series_no"
           label="Series No."
           size="small"
+          helperText={errors?.series_no?.message}
+          error={!!errors?.series_no}
           InputProps={{
             readOnly: true,
             disabled: true
@@ -165,6 +187,8 @@ const UpdateTransaction = ({
           name="category"
           label="Category"
           size="small"
+          helperText={errors?.category?.message}
+          error={!!errors?.category}
           InputProps={{
             readOnly: true,
             disabled: true
@@ -175,7 +199,15 @@ const UpdateTransaction = ({
           control={control}
           name="date_harvest"
           renderInput={(params) => (
-            <TextField {...params} label="Date Harvest" size="small" InputProps={{ disabled: true }} fullWidth />
+            <TextField
+              {...params}
+              label="Date Harvest"
+              size="small"
+              helperText={errors?.date_harvest?.message}
+              error={!!errors?.date_harvest}
+              InputProps={{ disabled: true }}
+              fullWidth
+            />
           )}
           readOnly
         />
@@ -185,6 +217,8 @@ const UpdateTransaction = ({
           name="farm"
           label="Farm"
           size="small"
+          helperText={errors?.farm?.message}
+          error={!!errors?.farm}
           InputProps={{
             readOnly: true,
             disabled: true
@@ -196,6 +230,8 @@ const UpdateTransaction = ({
           name="building"
           label="Building"
           size="small"
+          helperText={errors?.building?.message}
+          error={!!errors?.building}
           InputProps={{
             readOnly: true,
             disabled: true
@@ -207,6 +243,8 @@ const UpdateTransaction = ({
           name="leadman"
           label="Leadman"
           size="small"
+          helperText={errors?.leadman?.message}
+          error={!!errors?.leadman}
           InputProps={{
             readOnly: true,
             disabled: true
@@ -218,6 +256,8 @@ const UpdateTransaction = ({
           name="checker"
           label="Checker"
           size="small"
+          helperText={errors?.checker?.message}
+          error={!!errors?.checker}
           InputProps={{
             readOnly: true,
             disabled: true
@@ -229,6 +269,8 @@ const UpdateTransaction = ({
           name="buyer"
           label="Buyer"
           size="small"
+          helperText={errors?.buyer?.message}
+          error={!!errors?.buyer}
           InputProps={{
             readOnly: true,
             disabled: true
@@ -240,6 +282,8 @@ const UpdateTransaction = ({
           name="plate_no"
           label="Plate No."
           size="small"
+          helperText={errors?.plate_no?.message}
+          error={!!errors?.plate_no}
           InputProps={{
             readOnly: true,
             disabled: true
@@ -249,15 +293,21 @@ const UpdateTransaction = ({
         <TextFieldControlled
           control={control}
           name="heads"
+          type="number"
           label="Heads"
           size="small"
+          helperText={errors?.heads?.message}
+          error={!!errors?.heads}
         />
 
         <TextFieldControlled
           control={control}
           name="weight"
+          type="number"
           label="Weight"
           size="small"
+          helperText={errors?.weight?.message}
+          error={!!errors?.weight}
         />
       </Stack>
 
@@ -285,8 +335,8 @@ const schema = yup.object().shape({
   buyer: yup.string().required(),
   plate_no: yup.string().required(),
 
-  heads: yup.number().required(),
-  weight: yup.number().required()
+  heads: yup.number().typeError("Heads must be a number").required().label("Heads"),
+  weight: yup.number().typeError("Weight must be a number").required().label("Weight")
 })
 
 export default UpdateTransaction

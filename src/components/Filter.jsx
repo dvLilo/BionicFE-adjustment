@@ -35,6 +35,7 @@ import AutoCompleteControlled from "./controlled/AutoCompleteControlled"
 import "../assets/styles/filter.styles.scss"
 
 const Filter = ({
+  errors = {},
   onFilter = () => { },
   slotProps: {
     filterButtonProps = {},
@@ -60,10 +61,7 @@ const Filter = ({
     control,
     handleSubmit,
     reset,
-    watch,
-    // formState: {
-    //   errors
-    // }
+    watch
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -96,7 +94,6 @@ const Filter = ({
       date_harvest: data.date_harvest && moment(data.date_harvest).format("YYYY-MM-DD"),
     }
 
-    // console.log(params)
     onFilter(params)
   }
 
@@ -127,7 +124,14 @@ const Filter = ({
             control={control}
             name="from"
             renderInput={(params) => (
-              <TextField {...params} label="From Date" size="small" fullWidth />
+              <TextField
+                {...params}
+                label="From Date"
+                size="small"
+                helperText={errors?.from?.at(0)}
+                error={!!errors?.from}
+                fullWidth
+              />
             )}
             disabled={
               !!watch("date_harvest")
@@ -138,7 +142,14 @@ const Filter = ({
             control={control}
             name="to"
             renderInput={(params) => (
-              <TextField {...params} label="To Date" size="small" fullWidth />
+              <TextField
+                {...params}
+                label="To Date"
+                size="small"
+                helperText={errors?.to?.at(0)}
+                error={!!errors?.to}
+                fullWidth
+              />
             )}
             disabled={
               !!watch("date_harvest")
@@ -151,7 +162,14 @@ const Filter = ({
             control={control}
             name="date_harvest"
             renderInput={(params) => (
-              <TextField {...params} label="Harvest Date" size="small" fullWidth />
+              <TextField
+                {...params}
+                label="Harvest Date"
+                size="small"
+                helperText={errors?.date_harvest?.at(0)}
+                error={!!errors?.date_harvest}
+                fullWidth
+              />
             )}
             disabled={
               !!watch("from") || !!watch("to")
@@ -168,6 +186,8 @@ const Filter = ({
             type="number"
             label="Transaction No."
             size="small"
+            helperText={errors?.transaction_no?.at(0)}
+            error={!!errors?.transaction_no}
             inputProps={{
               min: 1
             }}
@@ -182,6 +202,8 @@ const Filter = ({
             type="number"
             label="Series No."
             size="small"
+            helperText={errors?.series_no?.at(0)}
+            error={!!errors?.series_no}
             inputProps={{
               min: 1
             }}

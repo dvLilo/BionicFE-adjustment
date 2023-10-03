@@ -55,7 +55,10 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    watch
+    watch,
+    formState: {
+      errors
+    }
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -109,6 +112,8 @@ const Login = () => {
               {...register("username")}
               className="bioncLanding__input"
               label="Username"
+              helperText={errors?.username?.message}
+              error={!!errors.username}
               InputProps={{
                 startAdornment: (
                   <Person className="bioncLanding__icon" />
@@ -131,6 +136,8 @@ const Login = () => {
               {...register("password")}
               className="bioncLanding__input"
               label="Password"
+              helperText={errors?.password?.message}
+              error={!!errors.password}
               inputProps={{
                 type: isVisible ? "text" : "password"
               }}
@@ -185,8 +192,8 @@ const Login = () => {
 }
 
 const schema = yup.object().shape({
-  username: yup.string().required(),
-  password: yup.string().required()
+  username: yup.string().required().label("Username"),
+  password: yup.string().required().label("Password")
 })
 
 export default Login

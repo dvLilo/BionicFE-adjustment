@@ -38,6 +38,7 @@ const Transaction = () => {
 
   const [getTransaction, {
     data: transactions,
+    error: transactionsError,
 
     originalArgs: transactionArgs,
 
@@ -84,7 +85,7 @@ const Transaction = () => {
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Typography className="bioncTransaction__heading" variant="h5">Detailed View</Typography>
 
-        <Filter onFilter={getTransaction} />
+        <Filter errors={transactionsError?.data?.errors} onFilter={getTransaction} />
       </Stack>
 
       <TableContainer sx={{ margin: "32px auto 0" }}>
@@ -214,6 +215,7 @@ const Transaction = () => {
                     <Typography variant="subtitle2">We can't find any item matching your search. Try adjusting your filter and try again.</Typography>
 
                     <Filter
+                      errors={transactionsError?.data?.errors}
                       slotProps={{
                         filterButtonProps: {
                           className: "bioncTransaction__button",

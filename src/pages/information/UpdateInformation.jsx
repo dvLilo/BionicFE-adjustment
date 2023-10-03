@@ -49,9 +49,10 @@ const UpdateInformation = ({
     handleSubmit,
     reset,
     setValue,
-    // formState: {
-    //   errors
-    // }
+    setError,
+    formState: {
+      errors
+    }
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -110,7 +111,24 @@ const UpdateInformation = ({
           })
           cancelUpdateHandler()
         } catch (error) {
-          console.log(error)
+          if (error.status === 422) {
+            Object.entries(error.data.errors).forEach((item) => {
+              const [name, [message]] = item
+
+              setError(name, {
+                type: "manual",
+                message: message
+              })
+            })
+
+            return
+          }
+
+          toast({
+            icon: "error",
+            title: "Error!",
+            text: "Something went wrong whilst trying to update this transaction. Please try again later.",
+          })
         }
       }
     })
@@ -142,6 +160,8 @@ const UpdateInformation = ({
           name="series_no"
           label="Series No."
           size="small"
+          helperText={errors?.series_no?.message}
+          error={!!errors?.series_no}
           InputProps={{
             readOnly: true,
             disabled: true
@@ -152,7 +172,14 @@ const UpdateInformation = ({
           control={control}
           name="date_harvest"
           renderInput={(params) => (
-            <TextField {...params} label="Date Harvest" size="small" fullWidth />
+            <TextField
+              {...params}
+              label="Date Harvest"
+              size="small"
+              helperText={errors?.date_harvest?.message}
+              error={!!errors?.date_harvest}
+              fullWidth
+            />
           )}
         />
 
@@ -161,7 +188,14 @@ const UpdateInformation = ({
           name="category"
           options={CATEGORIES}
           renderInput={(params) => (
-            <TextField {...params} label="Category" size="small" fullWidth />
+            <TextField
+              {...params}
+              label="Category"
+              size="small"
+              helperText={errors?.category?.message}
+              error={!!errors?.category}
+              fullWidth
+            />
           )}
           disablePortal
           disableClearable
@@ -172,7 +206,14 @@ const UpdateInformation = ({
           name="farm"
           options={FARMS}
           renderInput={(params) => (
-            <TextField {...params} label="Farm" size="small" fullWidth />
+            <TextField
+              {...params}
+              label="Farm"
+              size="small"
+              helperText={errors?.farm?.message}
+              error={!!errors?.farm}
+              fullWidth
+            />
           )}
           disablePortal
           disableClearable
@@ -183,7 +224,14 @@ const UpdateInformation = ({
           name="building"
           options={BUILDINGS}
           renderInput={(params) => (
-            <TextField {...params} label="Building" size="small" fullWidth />
+            <TextField
+              {...params}
+              label="Building"
+              size="small"
+              helperText={errors?.building?.message}
+              error={!!errors?.building}
+              fullWidth
+            />
           )}
           disablePortal
           disableClearable
@@ -194,6 +242,8 @@ const UpdateInformation = ({
           name="leadman"
           label="Leadman"
           size="small"
+          helperText={errors?.leadman?.message}
+          error={!!errors?.leadman}
         />
 
         <TextFieldControlled
@@ -201,6 +251,8 @@ const UpdateInformation = ({
           name="checker"
           label="Checker"
           size="small"
+          helperText={errors?.checker?.message}
+          error={!!errors?.checker}
         />
 
         <TextFieldControlled
@@ -208,6 +260,8 @@ const UpdateInformation = ({
           name="buyer"
           label="Buyer"
           size="small"
+          helperText={errors?.buyer?.message}
+          error={!!errors?.buyer}
         />
 
         <TextFieldControlled
@@ -215,6 +269,8 @@ const UpdateInformation = ({
           name="plate_no"
           label="Plate No."
           size="small"
+          helperText={errors?.plate_no?.message}
+          error={!!errors?.plate_no}
         />
       </Stack>
 
@@ -229,17 +285,17 @@ const UpdateInformation = ({
 const schema = yup.object().shape({
   id: yup.number().required(),
 
-  series_no: yup.string().required(),
+  series_no: yup.string().required().label("Series no."),
 
-  category: yup.string().required(),
-  date_harvest: yup.date().required(),
+  category: yup.string().required().label("Category"),
+  date_harvest: yup.date().required().label("Date harvest"),
 
-  farm: yup.string().required(),
-  building: yup.string().required(),
-  leadman: yup.string().required(),
-  checker: yup.string().required(),
-  buyer: yup.string().required(),
-  plate_no: yup.string().required()
+  farm: yup.string().required().label("Farm"),
+  building: yup.string().required().label("Building"),
+  leadman: yup.string().required().label("Leadman"),
+  checker: yup.string().required().label("Checker"),
+  buyer: yup.string().required().label("Buyer"),
+  plate_no: yup.string().required().label("Plate no.")
 })
 
 const CATEGORIES = [

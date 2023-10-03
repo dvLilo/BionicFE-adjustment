@@ -33,6 +33,7 @@ const Information = () => {
 
   const [getInformation, {
     data: informations,
+    error: informationsError,
 
     originalArgs: informationArgs,
 
@@ -65,6 +66,7 @@ const Information = () => {
         <Typography className="bioncTransaction__heading" variant="h5">Summarized View</Typography>
 
         <Filter
+          errors={informationsError?.data?.errors}
           slotProps={{
             transactionNoInputProps: {
               sx: {
@@ -197,6 +199,7 @@ const Information = () => {
                     <Typography variant="subtitle2">We can't find any item matching your search. Try adjusting your filter and try again.</Typography>
 
                     <Filter
+                      errors={informationsError?.data?.errors}
                       slotProps={{
                         filterButtonProps: {
                           className: "bioncTransaction__button",
