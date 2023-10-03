@@ -1,0 +1,65 @@
+.bioncLanding {
+  background: url(../images/login-background.png) 50% 50% / cover no-repeat, linear-gradient(45deg, rgba(100, 110, 203, 1) 48%, rgb(255, 255, 255) 100%) 50% 50% / cover no-repeat;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  & &__container {
+    background-color: rgba(0, 0, 0, 0.69);
+    width: 100%;
+    max-width: 1000px;
+    height: 468px;
+    border-radius: 32px;
+    box-shadow: 0 16px 16px -16px #131304;
+    overflow: hidden;
+  }
+
+  & &__section {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 50%;
+  }
+
+  & &__logo {
+    width: 128px;
+  }
+
+  & &__form {
+    background-color: #fafafa;
+    padding: 46px 32px;
+    border-radius: 32px;
+    box-shadow: -16px 0 16px -8px rgba(19, 19, 4, 0.79);
+  }
+
+  & &__title {
+    font-weight: 700;
+  }
+
+  & &__icon {
+    margin-right: 8px;
+    opacity: 0.6;
+  }
+
+  & &__label {
+    transform: translate(46px, 16px) scale(1);
+  }
+
+  & &__label--focus,
+  & &__label--filled {
+    transform: translate(14px, -9px) scale(0.75);
+  }
+
+  & &__button {
+    font-weight: 700;
+
+    margin-top: auto;
+  }
+
+  & &__mis {
+    width: 64px;
+  }
+}

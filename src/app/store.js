@@ -2,21 +2,25 @@ import { configureStore } from '@reduxjs/toolkit/'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
 import authRecuder from "../features/auth/auth.slice"
+import userReducer from "../features/user/user.slice"
 import themeReducer from "../features/theme/theme.slice"
 
+import { loginApi } from "../features/login/login.slice"
 import { transactionsApi } from "../features/transactions/transactions.slice"
 import { informationsApi } from "../features/informations/informations.slice"
 
 export const store = configureStore({
   reducer: {
     auth: authRecuder,
+    user: userReducer,
     theme: themeReducer,
 
+    [loginApi.reducerPath]: loginApi.reducer,
     [transactionsApi.reducerPath]: transactionsApi.reducer,
     [informationsApi.reducerPath]: informationsApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([transactionsApi.middleware, informationsApi.middleware]),
+    getDefaultMiddleware().concat([loginApi.middleware, transactionsApi.middleware, informationsApi.middleware]),
 })
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors
