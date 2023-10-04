@@ -8,6 +8,8 @@
   align-items: center;
   gap: 16px;
 
+  color: rgba(0, 0, 0, 0.87);
+
   & &__container {
     background-color: rgba(0, 0, 0, 0.69);
     width: 100%;
@@ -40,12 +42,25 @@
     font-weight: 700;
   }
 
+  & &__textfield {
+    color: rgba(0, 0, 0, 0.87);
+  }
+
   & &__icon {
+    color: rgba(0, 0, 0, 0.54);
     margin-right: 8px;
-    opacity: 0.6;
+  }
+
+  & &__notch {
+    border-color: rgba(0, 0, 0, 0.23);
+  }
+
+  & &__textfield:hover &__notch {
+    border-color: rgba(0, 0, 0, 0.87);
   }
 
   & &__label {
+    color: rgba(0, 0, 0, 0.6);
     transform: translate(46px, 16px) scale(1);
   }
 
@@ -54,7 +69,16 @@
     transform: translate(14px, -9px) scale(0.75);
   }
 
+  & &__input {
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  & &__iconbutton {
+    color: rgba(0, 0, 0, 0.54);
+  }
+
   & &__button {
+    color: #ffffff;
     font-weight: 700;
 
     margin-top: auto;

@@ -110,11 +110,15 @@ const Login = () => {
           <Stack direction="column" gap={2} flex={1} marginTop={4}>
             <TextField
               {...register("username")}
-              className="bioncLanding__input"
+              className="bioncLanding__textfield"
               label="Username"
               helperText={errors?.username?.message}
               error={!!errors.username}
               InputProps={{
+                classes: {
+                  input: "bioncLanding__input",
+                  notchedOutline: "bioncLanding__notch",
+                },
                 startAdornment: (
                   <Person className="bioncLanding__icon" />
                 )
@@ -134,7 +138,7 @@ const Login = () => {
 
             <TextField
               {...register("password")}
-              className="bioncLanding__input"
+              className="bioncLanding__textfield"
               label="Password"
               helperText={errors?.password?.message}
               error={!!errors.password}
@@ -142,11 +146,15 @@ const Login = () => {
                 type: isVisible ? "text" : "password"
               }}
               InputProps={{
+                classes: {
+                  input: "bioncLanding__input",
+                  notchedOutline: "bioncLanding__notch",
+                },
                 startAdornment: (
                   <Lock className="bioncLanding__icon" />
                 ),
                 endAdornment: (
-                  <IconButton onClick={onVisibleToggle}>
+                  <IconButton className="bioncLanding__iconbutton" onClick={onVisibleToggle}>
                     {isVisible ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 )
