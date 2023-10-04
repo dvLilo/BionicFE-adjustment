@@ -70,7 +70,7 @@ const Filter = ({
       date_harvest: null,
 
       transaction_no: "",
-      series_no: "06202309",
+      series_no: "",
 
       category: null,
       farm: null,
@@ -175,11 +175,7 @@ const Filter = ({
               !!watch("from") || !!watch("to")
             }
           />
-        </Stack>
 
-        <Divider />
-
-        <Stack direction="column" gap={2}>
           <TextFieldControlled
             control={control}
             name="transaction_no"
@@ -191,6 +187,9 @@ const Filter = ({
             inputProps={{
               min: 1
             }}
+            disabled={
+              !!watch("from") || !!watch("to")
+            }
             fullWidth
 
             {...transactionNoInputProps}
@@ -207,6 +206,9 @@ const Filter = ({
             inputProps={{
               min: 1
             }}
+            disabled={
+              !!watch("from") || !!watch("to")
+            }
             fullWidth
           />
         </Stack>
