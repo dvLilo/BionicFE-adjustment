@@ -331,6 +331,8 @@ const BUILDINGS = [
   "Bldg 8",
   "Bldg 9",
   "Bldg 10",
+  "Bldg 11",
+  "Bldg 12",
   "Bldg 1A",
   "Bldg 1B",
   "Bldg 2A",
