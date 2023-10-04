@@ -52,7 +52,7 @@ const useSweetAlert = () => {
     },
 
     toast: true,
-    timer: 4600,
+    timer: 3000,
     position: "top-end",
 
     didOpen: (toast) => {

@@ -102,6 +102,7 @@ const UpdateInformation = ({
     }
 
     confirm({
+      text: "This will save all the changes you made in this transaction.",
       onConfirm: async () => {
         try {
           await updateInformation(body).unwrap()

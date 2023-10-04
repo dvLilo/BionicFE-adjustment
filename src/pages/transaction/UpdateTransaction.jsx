@@ -103,6 +103,7 @@ const UpdateTransaction = ({
 
   const submitUpdateHandler = (data) => {
     confirm({
+      text: "This will save all the changes you made in this transaction.",
       onConfirm: async () => {
         try {
           await updateTransaction(data).unwrap()
@@ -298,6 +299,9 @@ const UpdateTransaction = ({
           size="small"
           helperText={errors?.heads?.message}
           error={!!errors?.heads}
+          inputProps={{
+            min: 1
+          }}
         />
 
         <TextFieldControlled
@@ -308,6 +312,10 @@ const UpdateTransaction = ({
           size="small"
           helperText={errors?.weight?.message}
           error={!!errors?.weight}
+          inputProps={{
+            min: 1,
+            step: "any"
+          }}
         />
       </Stack>
 
