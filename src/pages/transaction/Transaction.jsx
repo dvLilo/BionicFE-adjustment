@@ -78,7 +78,14 @@ const Transaction = () => {
             text: "Transaction has been deleted."
           })
         } catch (error) {
-          console.log(error)
+          if (error.status === 403) {
+            console.log(error)
+            toast({
+              title: "Error!",
+              text: error.data.message,
+              icon: "error"
+            })
+          }
         }
       }
     })
