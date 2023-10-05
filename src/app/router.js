@@ -11,11 +11,13 @@ import Login from "../pages/landing/Login"
 import Transaction from "../pages/transaction/Transaction"
 import Information from "../pages/information/Information"
 
+import NotFound from "../pages/404/NotFound"
+
 
 export const router = createBrowserRouter([
   {
     path: "*",
-    element: <><h1>Hello, wanderer.</h1><h2>This page doesn't exist.</h2></>
+    element: <NotFound />
   },
   {
     path: "/",

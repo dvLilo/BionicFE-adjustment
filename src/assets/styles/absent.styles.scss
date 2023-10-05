@@ -1,0 +1,19 @@
+.bioncNotFound {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  & &__logo {
+    width: 256px;
+  }
+
+  & &__title {
+    font-weight: 700;
+    margin-top: 32px;
+  }
+
+  & &__text {
+    font-weight: 400;
+    margin-bottom: 64px;
+  }
+}
