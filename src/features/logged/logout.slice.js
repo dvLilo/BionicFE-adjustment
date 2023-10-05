@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 export const logoutApi = createApi({
   reducerPath: "logoutApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000",
+    baseUrl: "https://pretestomega.rdfmis.ph/bionic/backend/public",
     prepareHeaders: (headers) => {
       headers.set("Accept", "application/json")
       headers.set("Authorization", `Bearer ${localStorage.getItem("token")}`)

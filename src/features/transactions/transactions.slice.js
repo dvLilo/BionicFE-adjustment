@@ -6,7 +6,7 @@ export const transactionsApi = createApi({
   reducerPath: "transactionsApi",
   tagTypes: ["Transaction"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000",
+    baseUrl: "https://pretestomega.rdfmis.ph/bionic/backend/public",
     prepareHeaders: (headers) => {
       headers.set("Accept", "application/json")
       headers.set("Authorization", `Bearer ${localStorage.getItem("token")}`)
