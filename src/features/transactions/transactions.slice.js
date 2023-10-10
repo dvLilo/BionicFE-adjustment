@@ -6,7 +6,7 @@ export const transactionsApi = createApi({
   reducerPath: "transactionsApi",
   tagTypes: ["Transaction"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://pretestomega.rdfmis.ph/bionic/backend/public",
+    baseUrl: process.env.REACT_APP_BASEURL,
     prepareHeaders: (headers) => {
       headers.set("Accept", "application/json")
       headers.set("Authorization", `Bearer ${localStorage.getItem("token")}`)
@@ -34,14 +34,14 @@ export const transactionsApi = createApi({
         method: "PUT",
         body: body
       }),
-      invalidatesTags: ["Transaction"]
+      invalidatesTags: (_, error) => error ? [] : ["Transaction"]
     }),
     deleteTransaction: builder.mutation({
       query: (id) => ({
         url: "/api/transactions/" + id,
         method: "DELETE"
       }),
-      invalidatesTags: ["Transaction"]
+      invalidatesTags: (_, error) => error ? [] : ["Transaction"]
     })
   })
 })

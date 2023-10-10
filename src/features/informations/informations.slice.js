@@ -6,7 +6,7 @@ export const informationsApi = createApi({
   reducerPath: "informationsApi",
   tagTypes: ["Informations"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://pretestomega.rdfmis.ph/bionic/backend/public",
+    baseUrl: process.env.REACT_APP_BASEURL,
     prepareHeaders: (headers) => {
       headers.set("Accept", "application/json")
       headers.set("Authorization", `Bearer ${localStorage.getItem("token")}`)
@@ -34,7 +34,7 @@ export const informationsApi = createApi({
         method: "PUT",
         body: body
       }),
-      invalidatesTags: ["Informations"]
+      invalidatesTags: (_, error) => error ? [] : ["Informations"]
     })
   })
 })
