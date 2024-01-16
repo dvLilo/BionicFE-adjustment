@@ -112,6 +112,7 @@ const Login = () => {
               {...register("username")}
               className="bioncLanding__textfield"
               label="Username"
+              autoComplete="off"
               helperText={errors?.username?.message}
               error={!!errors.username}
               InputProps={{
@@ -140,6 +141,7 @@ const Login = () => {
               {...register("password")}
               className="bioncLanding__textfield"
               label="Password"
+              autoComplete="off"
               helperText={errors?.password?.message}
               error={!!errors.password}
               inputProps={{

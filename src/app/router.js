@@ -11,6 +11,8 @@ import Login from "../pages/landing/Login"
 import Transaction from "../pages/transaction/Transaction"
 import Information from "../pages/information/Information"
 
+import Reports from "../pages/reports/Reports"
+
 import NotFound from "../pages/404/NotFound"
 
 
@@ -33,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/detailed",
         element: <Transaction />
+      },
+      {
+        path: "/reports",
+        element: <Reports />
       }
     ]
   }

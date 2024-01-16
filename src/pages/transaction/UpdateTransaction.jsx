@@ -299,9 +299,9 @@ const UpdateTransaction = ({
           size="small"
           helperText={errors?.heads?.message}
           error={!!errors?.heads}
-          inputProps={{
-            min: 1
-          }}
+        // inputProps={{
+        //   min: 1
+        // }}
         />
 
         <TextFieldControlled
@@ -312,10 +312,10 @@ const UpdateTransaction = ({
           size="small"
           helperText={errors?.weight?.message}
           error={!!errors?.weight}
-          inputProps={{
-            min: 1,
-            step: "any"
-          }}
+        // inputProps={{
+        //   min: 1,
+        //   step: "any"
+        // }}
         />
       </Stack>
 

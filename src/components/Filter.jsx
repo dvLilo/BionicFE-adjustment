@@ -86,7 +86,7 @@ const Filter = ({
     setOpen(false)
   }
 
-  const sumbitFilterHandler = (data) => {
+  const submitFilterHandler = (data) => {
     const params = {
       ...data,
       from: data.from && moment(data.from).format("YYYY-MM-DD"),
@@ -107,7 +107,7 @@ const Filter = ({
         PaperProps={{
           className: "bioncFilter__paper",
           component: "form",
-          onSubmit: handleSubmit(sumbitFilterHandler)
+          onSubmit: handleSubmit(submitFilterHandler)
         }}
         disablePortal
       >

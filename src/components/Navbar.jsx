@@ -12,6 +12,7 @@ import {
 
 import {
   DarkMode,
+  Flag,
   LightMode,
   Logout,
   Menu,
@@ -84,6 +85,7 @@ const Navbar = () => {
         <Stack direction="row" alignItems="center" spacing={1}>
           <Button className="bioncNavbar__link" size="large" color="info" to="/summarized" component={Link} startIcon={<Sort />}>Summarized</Button>
           <Button className="bioncNavbar__link" size="large" color="info" to="/detailed" component={Link} startIcon={<Menu />}>Detailed</Button>
+          <Button className="bioncNavbar__link" size="large" color="info" to="/reports" component={Link} startIcon={<Flag />}>Reports</Button>
         </Stack>
       </Stack>
 
