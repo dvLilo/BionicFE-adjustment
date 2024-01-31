@@ -1,10 +1,12 @@
+import { useEffect } from "react"
+
 import * as yup from "yup"
 
 import { useForm } from "react-hook-form"
 
 import { yupResolver } from "@hookform/resolvers/yup"
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import { useNavigate } from "react-router-dom"
 
@@ -40,6 +42,12 @@ import { useSignInMutation } from "../../features/logged/login.slice"
 import "../../assets/styles/login.styles.scss"
 
 const Login = () => {
+
+  const isAuthenticated = useSelector((state) => state.auth)
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/summarized", { replace: true })
+  }, [isAuthenticated])
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
