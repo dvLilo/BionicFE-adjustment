@@ -138,6 +138,7 @@ const Activities = () => {
         exportTransactionHandler(data)
       }
     } catch (error) {
+      console.log(error)
       toast({
         icon: "error",
         title: "Error!",
@@ -224,7 +225,7 @@ const Activities = () => {
       toast({
         icon: "error",
         title: "Error!",
-        text: "Something went wrong whilst trying to generate reports. Please try again later.",
+        text: "Something went wrong whilst trying to generate activity reports. Please try again later.",
       })
     }
   }

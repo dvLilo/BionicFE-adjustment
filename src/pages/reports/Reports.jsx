@@ -107,10 +107,20 @@ const Reports = () => {
         return
       }
 
+      if (error.status === 404) {
+        toast({
+          icon: "error",
+          title: "Error!",
+          text: "We can't find any item matching your search. Try adjusting your filter and try again.",
+        })
+
+        return
+      }
+
       toast({
         icon: "error",
         title: "Error!",
-        text: "Something went wrong whilst trying to update this transaction. Please try again later.",
+        text: "Something went wrong whilst trying to generate reports. Please try again later.",
       })
     }
   }
