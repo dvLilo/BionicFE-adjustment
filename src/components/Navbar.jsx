@@ -16,7 +16,8 @@ import {
   LightMode,
   Logout,
   Menu,
-  Sort
+  Sort,
+  Visibility
 } from "@mui/icons-material"
 
 import Logo from "../assets/images/logo.png"
@@ -86,6 +87,7 @@ const Navbar = () => {
           <Button className="bioncNavbar__link" size="large" color="info" to="/summarized" component={Link} startIcon={<Sort />}>Summarized</Button>
           <Button className="bioncNavbar__link" size="large" color="info" to="/detailed" component={Link} startIcon={<Menu />}>Detailed</Button>
           <Button className="bioncNavbar__link" size="large" color="info" to="/reports" component={Link} startIcon={<Flag />}>Reports</Button>
+          <Button className="bioncNavbar__link" size="large" color="info" to="/activities" component={Link} startIcon={<Visibility />}>Activity</Button>
         </Stack>
       </Stack>
 

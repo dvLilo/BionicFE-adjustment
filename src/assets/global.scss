@@ -70,6 +70,18 @@ body {
   }
 }
 
+.bioncTransactionChanges {
+
+  & &__message {
+    flex: 1;
+  }
+
+  & &__item {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+}
+
 .bioncSweetAlert {
   z-index: 9999;
 

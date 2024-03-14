@@ -13,6 +13,8 @@ import Information from "../pages/information/Information"
 
 import Reports from "../pages/reports/Reports"
 
+import Activities from "../pages/activities/Activities"
+
 import NotFound from "../pages/404/NotFound"
 
 
@@ -39,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/reports",
         element: <Reports />
+      },
+      {
+        path: "/activities",
+        element: <Activities />
       }
     ]
   }

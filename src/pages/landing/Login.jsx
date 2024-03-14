@@ -47,6 +47,8 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) navigate("/summarized", { replace: true })
+
+    // eslint-disable-next-line
   }, [isAuthenticated])
 
   const dispatch = useDispatch()
@@ -198,7 +200,7 @@ const Login = () => {
 
       <Stack direction="column" alignItems="center">
         <Typography variant="subtitle1">
-          Bionic &copy; 2023
+          Bionic &copy; 2024
         </Typography>
 
         <Typography variant="subtitle2">
